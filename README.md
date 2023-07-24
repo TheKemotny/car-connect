@@ -1,19 +1,26 @@
 ### Project requirements
 
 - Cars:
+  - details of car
   - list of cars
   - description
+  - brand
+  - model
   - photo
-  - range
+  - type of fuel
+  - type of car
+  - amount of seats
+  - trunk
+  - fuel consumption
+  - range (in km)
   - filter
   - availability
   - vin
-  - price
+  - price (in PLN)
   - localization
 
 - Rents:
   - history of rents (per user)(all for admin)
-  - price /day /hour
   - discount for renters with more days
   - discount for drivers with more experience
   - optional insurance
