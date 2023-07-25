@@ -1,4 +1,4 @@
-package pl.sda.carconnect.domain.dto;
+package pl.sda.carconnect.dto;
 
 import pl.sda.carconnect.domain.enumeration.BodyType;
 import pl.sda.carconnect.domain.enumeration.EngineType;

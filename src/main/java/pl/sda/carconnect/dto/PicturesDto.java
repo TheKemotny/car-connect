@@ -1,4 +1,4 @@
-package pl.sda.carconnect.domain.dto;
+package pl.sda.carconnect.dto;
 
 import java.util.List;
 
