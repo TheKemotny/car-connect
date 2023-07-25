@@ -7,6 +7,7 @@ public enum BodyType {
     HATCHBACK("HATCHBACK"),
     SUPERCAR("SUPERCAR"),
     VAN("VAN"),
+    MUSCLE("MUSCLE"),
     PICKUP("PICKUP");
 
     private final String name;
