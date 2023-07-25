@@ -59,6 +59,7 @@ public class DataInitializer implements CommandLineRunner {
                         .build())
                 .build();
         carService.addCar(opel);
+        carService.addCar(mustang);
     }
 
     @Override
