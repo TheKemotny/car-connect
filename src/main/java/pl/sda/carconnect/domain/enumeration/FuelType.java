@@ -4,6 +4,7 @@ public enum FuelType {
     LPG ("LPG"),
     DIESEL("DIESEL"),
     GASOLINE("GASOLINE"),
+    ELECTRIC("ELECTRIC"),
     BIODIESEL("BIODIESEL");
 
 
@@ -16,5 +17,5 @@ public enum FuelType {
         this.fuelDescription = fuelDescription;
     }
 
-    String fuelDescription;
+    private final String fuelDescription;
 }
