@@ -1,6 +1,5 @@
 package pl.sda.carconnect.domain.dto;
 
-import pl.sda.carconnect.domain.Pictures;
 import pl.sda.carconnect.domain.enumeration.BodyType;
 import pl.sda.carconnect.domain.enumeration.EngineType;
 import pl.sda.carconnect.domain.enumeration.FuelType;
@@ -19,6 +18,6 @@ public record CarDto(
         long pricePerDayInPolishGrosz,
         boolean available,
         int rangeInKilometers,
-        Pictures pictures
+        PicturesDto pictures
 ) {
 }
