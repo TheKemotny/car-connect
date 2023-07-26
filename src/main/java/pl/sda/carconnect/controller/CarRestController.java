@@ -29,7 +29,7 @@ public class CarRestController {
 
     @GetMapping(path = "/{id}")
     public CarDto getCarById(@PathVariable("id") Long id) {
-        log.info("Trying to get car with id: []{}", id);
+        log.info("Trying to get car with id: [{}]", id);
         return carMapper.fromEntityToDto(carService.findCarById(id));
     }
 
