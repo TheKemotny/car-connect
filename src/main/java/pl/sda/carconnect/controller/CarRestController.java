@@ -1,9 +1,7 @@
 package pl.sda.carconnect.controller;
 
-import jakarta.websocket.server.PathParam;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 import pl.sda.carconnect.dto.CarDto;
 import pl.sda.carconnect.mapper.CarMapper;
