@@ -1,9 +1,11 @@
 package pl.sda.carconnect.dto;
 
+import lombok.Builder;
 import pl.sda.carconnect.domain.enumeration.BodyType;
 import pl.sda.carconnect.domain.enumeration.EngineType;
 import pl.sda.carconnect.domain.enumeration.FuelType;
 
+@Builder
 public record CarDto(
         Long id,
         String model,
