@@ -1,13 +1,15 @@
 package pl.sda.carconnect.mapper;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import pl.sda.carconnect.domain.Car;
-import pl.sda.carconnect.domain.Pictures;
 import pl.sda.carconnect.dto.CarDto;
-import pl.sda.carconnect.dto.PicturesDto;
 
 @Component
+@RequiredArgsConstructor
 public class CarMapper implements IMapper<Car, CarDto> {
+    private final PicturesMapper picturesMapper;
+
     @Override
     public CarDto fromEntityToDto(Car entity) {
         return CarDto.builder()
@@ -24,10 +26,7 @@ public class CarMapper implements IMapper<Car, CarDto> {
                 .pricePerDayInPolishGrosz(entity.getPricePerDayInPolishGrosz())
                 .available(entity.isAvailable())
                 .rangeInKilometers(entity.getRangeInKilometers())
-                .pictures(PicturesDto.builder()
-                        .mainPictureUrl(entity.getPictures().getMainPictureUrl())
-                        .otherPicturesUrls(entity.getPictures().getOtherPicturesUrls())
-                        .build())
+                .pictures(picturesMapper.fromEntityToDto(entity.getPictures()))
                 .build();
     }
 
@@ -47,10 +46,7 @@ public class CarMapper implements IMapper<Car, CarDto> {
                 .pricePerDayInPolishGrosz(dto.pricePerDayInPolishGrosz())
                 .available(dto.available())
                 .rangeInKilometers(dto.rangeInKilometers())
-                .pictures(Pictures.builder()
-                        .mainPictureUrl(dto.pictures().mainPictureUrl())
-                        .otherPicturesUrls(dto.pictures().otherPicturesUrls())
-                        .build())
+                .pictures(picturesMapper.fromDtoToEntity(dto.pictures()))
                 .build();
     }
 }
