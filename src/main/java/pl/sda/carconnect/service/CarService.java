@@ -16,11 +16,16 @@ public class CarService {
 
     public void addCar(Car car) {
         carRepository.addCar(car);
-        log.info("Adding car: {}", car);
+        log.info("Adding car: [{}]", car);
     }
 
     public List<Car> getAllCars() {
         log.info("Getting all cars");
         return carRepository.getAllCars();
+    }
+
+    public Car findCarById(Long id) {
+        // TODO
+        throw new RuntimeException("Not implemented yey");
     }
 }

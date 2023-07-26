@@ -1,10 +1,10 @@
 package pl.sda.carconnect.controller;
 
+import jakarta.websocket.server.PathParam;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.repository.query.Param;
+import org.springframework.web.bind.annotation.*;
 import pl.sda.carconnect.dto.CarDto;
 import pl.sda.carconnect.mapper.CarMapper;
 import pl.sda.carconnect.service.CarService;
@@ -26,4 +26,11 @@ public class CarRestController {
                 .map(carMapper::fromEntityToDto)
                 .toList();
     }
+
+    @GetMapping(path = "/{id}")
+    public CarDto getCarById(@PathVariable("id") Long id) {
+        log.info("Trying to get car with id: []{}", id);
+        return carMapper.fromEntityToDto(carService.findCarById(id));
+    }
+
 }
