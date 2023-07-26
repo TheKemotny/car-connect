@@ -25,7 +25,6 @@ public class CarService {
     }
 
     public Car findCarById(Long id) {
-        // TODO
-        throw new RuntimeException("Not implemented yey");
+        return carRepository.findCarById(id);
     }
 }
