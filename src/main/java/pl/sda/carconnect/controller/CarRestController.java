@@ -3,8 +3,6 @@ package pl.sda.carconnect.controller;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -51,5 +49,12 @@ public class CarRestController {
         log.info("Trying to delete car with id: [{}]", id);
         carService.deleteCarById(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping(path = "/{id}")
+    public CarDto replaceCar(@PathVariable("id") Long id, @RequestBody @Valid CarDto toReplace) {
+        log.info("Trying to update car with id: [{}] with put method content: [{}]", id, toReplace);
+        carService.replaceCar(id, carMapper.fromDtoToEntity(toReplace));
+        return null;
     }
 }

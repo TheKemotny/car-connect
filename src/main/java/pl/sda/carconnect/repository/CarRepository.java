@@ -42,4 +42,15 @@ public class CarRepository {
         iCarRepository.deleteById(id);
         log.info("Deleted car with id: [{}]", id);
     }
+
+    public Car replaceCar(Long id, Car car) {
+        if(!iCarRepository.existsById(id)) {
+            throw new WrongCarIdException("Car with id: [" + id + "] not found.");
+        }
+        if(!id.equals(car.getId())) {
+            throw new WrongCarIdException("Car id mismatch, path id: [%d], body id: [%d].".formatted(id, car.getId()));
+        }
+        log.info("Replacing car with id: [{}] with new car: [{}]", id, car);
+        return iCarRepository.save(car);
+    }
 }
