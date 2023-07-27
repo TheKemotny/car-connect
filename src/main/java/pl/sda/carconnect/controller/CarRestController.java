@@ -50,6 +50,6 @@ public class CarRestController {
     public ResponseEntity<Void> deleteCar(@PathVariable("id") Long id) {
         log.info("Trying to delete car with id: [{}]", id);
         carService.deleteCarById(id);
-
+        return ResponseEntity.noContent().build();
     }
 }
