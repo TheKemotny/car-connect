@@ -15,20 +15,31 @@ import java.util.List;
 public class CarRepository {
     private final ICarRepository iCarRepository;
 
-    public void addCar(Car car) {
-        iCarRepository.save(car);
+    public Car addCar(Car car) {
+        Car carWithId = iCarRepository.save(car);
+        log.info("Saving car: [{}]", carWithId);
+        return carWithId;
     }
 
     public List<Car> getAllCars() {
+        log.info("Getting all cars");
         return iCarRepository.findAll();
     }
 
     public Car findCarById(Long id) {
         return iCarRepository.findById(id)
                 .map(car -> {
-                    log.info("found car: [{}]", car);
+                    log.info("Found car: [{}]", car);
                     return car;
                 })
                 .orElseThrow(() -> new WrongCarIdException("Car with id: [" + id +"] not found."));
+    }
+
+    public void deleteCarById(Long id) {
+        if(!iCarRepository.existsById(id)) {
+            throw new WrongCarIdException("Car with id: [" + id + "] not found.");
+        }
+        iCarRepository.deleteById(id);
+        log.info("Deleted car with id: [{}]", id);
     }
 }

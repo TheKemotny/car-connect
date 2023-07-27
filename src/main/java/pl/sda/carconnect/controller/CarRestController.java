@@ -1,12 +1,19 @@
 package pl.sda.carconnect.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
+import pl.sda.carconnect.domain.Car;
 import pl.sda.carconnect.dto.CarDto;
 import pl.sda.carconnect.mapper.CarMapper;
 import pl.sda.carconnect.service.CarService;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -31,4 +38,18 @@ public class CarRestController {
         return carMapper.fromEntityToDto(carService.findCarById(id));
     }
 
+    @PostMapping
+    public ResponseEntity<Void> addCar(@RequestBody @Valid CarDto carDto, UriComponentsBuilder uriComponentsBuilder) {
+        log.info("Trying to add car: [{}]", carDto);
+        CarDto resultDtoCar = carMapper.fromEntityToDto(carService.addCar(carMapper.fromDtoToEntity(carDto)));
+        URI uri = uriComponentsBuilder.path("/api/cars/{id}").buildAndExpand(resultDtoCar.id()).toUri();
+        return ResponseEntity.created(uri).build();
+    }
+
+    @DeleteMapping(path = "/{id}")
+    public ResponseEntity<Void> deleteCar(@PathVariable("id") Long id) {
+        log.info("Trying to delete car with id: [{}]", id);
+        carService.deleteCarById(id);
+
+    }
 }

@@ -14,17 +14,19 @@ import java.util.List;
 public class CarService {
     private final CarRepository carRepository;
 
-    public void addCar(Car car) {
-        carRepository.addCar(car);
-        log.info("Adding car: [{}]", car);
+    public Car addCar(Car car) {
+        return carRepository.addCar(car);
     }
 
     public List<Car> getAllCars() {
-        log.info("Getting all cars");
         return carRepository.getAllCars();
     }
 
     public Car findCarById(Long id) {
         return carRepository.findCarById(id);
+    }
+
+    public void deleteCarById(Long id) {
+        carRepository.deleteCarById(id);
     }
 }
