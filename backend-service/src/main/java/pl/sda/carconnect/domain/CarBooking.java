@@ -35,18 +35,18 @@ public class CarBooking {
     @ManyToOne
     Address finalLocation;
 
-    LocalDateTime timestampOfCreation;
+    LocalDateTime creationTimestamp;
 
-    LocalDateTime timestampOfLastUpdate;
+    LocalDateTime lastUpdateTimestamp;
 
     @PrePersist
-    void writeTimestampOfCreation() {
-        this.timestampOfCreation = LocalDateTime.now();
-        this.timestampOfLastUpdate = this.timestampOfCreation;
+    void writeCreationTimestamp() {
+        this.creationTimestamp = LocalDateTime.now();
+        this.lastUpdateTimestamp = this.creationTimestamp;
     }
 
     @PreUpdate
-    void writeTimestampOfLastUpdate() {
-        this.timestampOfLastUpdate = LocalDateTime.now();
+    void writeLastUpdateTimestamp() {
+        this.lastUpdateTimestamp = LocalDateTime.now();
     }
 }
