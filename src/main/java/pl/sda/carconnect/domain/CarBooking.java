@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -33,4 +34,19 @@ public class CarBooking {
 
     @ManyToOne
     Address finalLocation;
+
+    LocalDateTime timestampOfCreation;
+
+    LocalDateTime timestampOfLastUpdate;
+
+    @PrePersist
+    void writeTimestampOfCreation() {
+        this.timestampOfCreation = LocalDateTime.now();
+        this.timestampOfLastUpdate = this.timestampOfCreation;
+    }
+
+    @PreUpdate
+    void writeTimestampOfLastUpdate() {
+        this.timestampOfLastUpdate = LocalDateTime.now();
+    }
 }

@@ -26,4 +26,9 @@ public class Client {
     String phoneNumber;
     @ManyToOne
     Address address;
+
+    @PrePersist
+    void writeDateOfAccountCreated() {
+        this.dateOfAccountCreated = LocalDateTime.now();
+    }
 }
