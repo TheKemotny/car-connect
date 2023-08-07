@@ -51,6 +51,7 @@ public class CarRepository {
             throw new WrongCarIdException("Car id mismatch, path id: [%d], body id: [%d].".formatted(id, car.getId()));
         }
         log.info("Replacing car with id: [{}] with new car: [{}]", id, car);
+
         return iCarRepository.save(car);
     }
 }
