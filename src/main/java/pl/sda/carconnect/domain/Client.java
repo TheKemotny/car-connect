@@ -1,9 +1,6 @@
 package pl.sda.carconnect.domain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -18,7 +15,7 @@ import java.time.LocalDateTime;
 @Table(name = "CLIENTS")
 public class Client {
     @Id
-    @Column(nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String name;
     String surname;
@@ -27,5 +24,6 @@ public class Client {
     LocalDate dateOfBirth;
     LocalDateTime dateOfAccountCreated;
     String phoneNumber;
+    @ManyToOne
     Address address;
 }

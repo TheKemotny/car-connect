@@ -14,7 +14,6 @@ import lombok.NoArgsConstructor;
 @Table(name = "ADDRESSES")
 public class Address {
     @Id
-    @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
