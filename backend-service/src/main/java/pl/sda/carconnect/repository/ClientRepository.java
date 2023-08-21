@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 import pl.sda.carconnect.domain.Client;
-import pl.sda.carconnect.exception.WrongCarIdException;
 import pl.sda.carconnect.exception.WrongClientIdException;
 import pl.sda.carconnect.repository.interfaces.IClientRepository;
 
