@@ -13,7 +13,10 @@ import pl.sda.carconnect.repository.interfaces.ICarBookingRepository;
 public class CarBookingRepository {
     private final ICarBookingRepository iCarBookingRepository;
 
-    public CarBooking bookCar(CarBookingRequestDto bookingDto) {
-        return null;
+
+    public CarBooking bookCar(CarBooking bookingRecord) {
+        CarBooking saved = iCarBookingRepository.save(bookingRecord);
+        log.info("Created booking record: [{}]", saved);
+        return saved;
     }
 }
