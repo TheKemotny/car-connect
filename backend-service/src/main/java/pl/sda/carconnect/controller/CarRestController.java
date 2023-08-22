@@ -18,6 +18,7 @@ import java.util.List;
 @Slf4j
 @RequiredArgsConstructor
 @RequestMapping(path = "/api/cars")
+@CrossOrigin("*")
 public class CarRestController {
     private final CarService carService;
     private final CarMapper carMapper;
