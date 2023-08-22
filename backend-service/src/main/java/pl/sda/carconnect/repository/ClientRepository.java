@@ -28,4 +28,9 @@ public class ClientRepository {
         log.info("Getting all clients");
         return iClientRepository.findAll();
     }
+
+    public Client addClient(Client client) {
+        log.info("Saving client: [{}]", client);
+        return iClientRepository.save(client);
+    }
 }

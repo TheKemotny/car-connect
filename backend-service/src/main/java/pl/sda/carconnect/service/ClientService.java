@@ -21,4 +21,8 @@ public class ClientService {
     public List<Client> findAllClients() {
         return clientRepository.findAllClients();
     }
+
+    public Client addClient(Client client) {
+        return clientRepository.addClient(client);
+    }
 }

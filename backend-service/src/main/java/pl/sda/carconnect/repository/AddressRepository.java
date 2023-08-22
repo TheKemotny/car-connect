@@ -8,6 +8,8 @@ import pl.sda.carconnect.domain.Address;
 import pl.sda.carconnect.exception.WrongAddressIdException;
 import pl.sda.carconnect.repository.interfaces.IAddressRepository;
 
+import java.util.List;
+
 @Repository
 @Slf4j
 @RequiredArgsConstructor
@@ -21,5 +23,16 @@ public class AddressRepository {
                     return address;
                 })
                 .orElseThrow(() -> new WrongAddressIdException("Car with id: [" + aLong +"] not found."));
+    }
+
+    public Address addAddress(Address address) {
+        log.info("Saving address: [{}]", address);
+        iAddressRepository.save(address);
+        return address;
+    }
+
+    public List<Address> getAllAddresses() {
+        log.info("Getting all address");
+        return iAddressRepository.findAll();
     }
 }
