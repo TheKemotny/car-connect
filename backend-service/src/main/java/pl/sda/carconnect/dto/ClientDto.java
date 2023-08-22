@@ -1,10 +1,12 @@
 package pl.sda.carconnect.dto;
 
 import jakarta.persistence.ManyToOne;
+import lombok.Builder;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+@Builder
 public record ClientDto(
         Long id,
         String name,

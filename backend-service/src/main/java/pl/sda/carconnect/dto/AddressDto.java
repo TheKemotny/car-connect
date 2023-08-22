@@ -1,5 +1,8 @@
 package pl.sda.carconnect.dto;
 
+import lombok.Builder;
+
+@Builder
 public record AddressDto(
         Long id,
 

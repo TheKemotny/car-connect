@@ -7,6 +7,8 @@ import pl.sda.carconnect.domain.Client;
 import pl.sda.carconnect.exception.WrongClientIdException;
 import pl.sda.carconnect.repository.interfaces.IClientRepository;
 
+import java.util.List;
+
 @Repository
 @RequiredArgsConstructor
 @Slf4j
@@ -20,5 +22,10 @@ public class ClientRepository {
                     return client;
                 })
                 .orElseThrow(() -> new WrongClientIdException("Client with id: [" + aLong +"] not found."));
+    }
+
+    public List<Client> findAllClients() {
+        log.info("Getting all clients");
+        return iClientRepository.findAll();
     }
 }
