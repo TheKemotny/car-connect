@@ -13,10 +13,21 @@ import {HttpClientModule} from "@angular/common/http";
 import { ClientsComponent } from './components/clients/clients.component';
 import { AboutComponent } from './components/about/about.component';
 import { RentsHistoryComponent } from './components/rents-history/rents-history.component';
-import {RouterModule} from "@angular/router";
+import {RouterModule, Routes} from "@angular/router";
 import {aboutUrl, carsUrl, clientsUrl, homePageUrl, notFoundUrl, rentsHistoryUrl} from "./models/urls";
 import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import {MatDividerModule} from "@angular/material/divider";
+import {MatIconModule} from "@angular/material/icon";
+
+const routingTable: Routes = [
+  {path: homePageUrl, component: HomeComponent},
+  {path: rentsHistoryUrl, component: RentsHistoryComponent},
+  {path: carsUrl, component: CarsComponent},
+  {path: clientsUrl, component: ClientsComponent},
+  {path: aboutUrl, component: AboutComponent},
+  {path: notFoundUrl, component: NotFoundComponent}
+]
 
 @NgModule({
   declarations: [
@@ -37,14 +48,9 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     MatButtonToggleModule,
     MatCardModule,
     MatButtonModule,
-    RouterModule.forRoot([
-      {path: homePageUrl, component: HomeComponent},
-      {path: rentsHistoryUrl, component: RentsHistoryComponent},
-      {path: carsUrl, component: CarsComponent},
-      {path: clientsUrl, component: ClientsComponent},
-      {path: aboutUrl, component: AboutComponent},
-      {path: notFoundUrl, component: NotFoundComponent}
-    ])
+    RouterModule.forRoot(routingTable),
+    MatIconModule,
+    MatDividerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
