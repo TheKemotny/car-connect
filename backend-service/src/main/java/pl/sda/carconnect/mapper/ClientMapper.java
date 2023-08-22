@@ -10,6 +10,8 @@ import pl.sda.carconnect.dto.ClientDto;
 @Component
 @RequiredArgsConstructor
 public class ClientMapper implements IMapper<Client, ClientDto>{
+    private final AddressMapper addressMapper;
+
     @Override
     public ClientDto fromEntityToDto(Client entity) {
         return ClientDto.builder()
@@ -18,15 +20,7 @@ public class ClientMapper implements IMapper<Client, ClientDto>{
                 .pesel(entity.getPesel())
                 .email(entity.getEmail())
                 .surname(entity.getSurname())
-                .address(AddressDto.builder()
-                        .id(entity.getAddress().getId())
-                        .street(entity.getAddress().getStreet())
-                        .zipCode(entity.getAddress().getZipCode())
-                        .city(entity.getAddress().getCity())
-                        .houseNumber(entity.getAddress().getHouseNumber())
-                        .country(entity.getAddress().getCountry())
-                        .voivodeship(entity.getAddress().getVoivodeship())
-                        .build())
+                .address(addressMapper.fromEntityToDto(entity.getAddress()))
                 .dateOfBirth(entity.getDateOfBirth())
                 .dateOfAccountCreated(entity.getDateOfAccountCreated())
                 .phoneNumber(entity.getPhoneNumber())
@@ -44,15 +38,7 @@ public class ClientMapper implements IMapper<Client, ClientDto>{
                 .dateOfBirth(dto.dateOfBirth())
                 .dateOfAccountCreated(dto.dateOfAccountCreated())
                 .phoneNumber(dto.phoneNumber())
-                .address(Address.builder()
-                        .id(dto.address().id())
-                        .street(dto.address().street())
-                        .zipCode(dto.address().zipCode())
-                        .city(dto.address().city())
-                        .houseNumber(dto.address().houseNumber())
-                        .country(dto.address().country())
-                        .voivodeship(dto.address().voivodeship())
-                        .build())
+                .address(addressMapper.fromDtoToEntity(dto.address()))
                 .build();
     }
 }

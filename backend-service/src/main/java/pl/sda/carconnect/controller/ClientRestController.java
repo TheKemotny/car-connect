@@ -3,8 +3,6 @@ package pl.sda.carconnect.controller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
-import pl.sda.carconnect.domain.Client;
-import pl.sda.carconnect.dto.CarDto;
 import pl.sda.carconnect.dto.ClientDto;
 import pl.sda.carconnect.mapper.ClientMapper;
 import pl.sda.carconnect.service.ClientService;

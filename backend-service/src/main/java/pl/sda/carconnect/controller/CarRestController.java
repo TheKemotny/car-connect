@@ -6,7 +6,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
-import pl.sda.carconnect.domain.Car;
 import pl.sda.carconnect.dto.CarDto;
 import pl.sda.carconnect.mapper.CarMapper;
 import pl.sda.carconnect.service.CarService;

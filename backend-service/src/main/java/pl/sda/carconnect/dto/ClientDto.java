@@ -1,6 +1,5 @@
 package pl.sda.carconnect.dto;
 
-import jakarta.persistence.ManyToOne;
 import lombok.Builder;
 
 import java.time.LocalDate;
