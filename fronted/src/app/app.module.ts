@@ -13,6 +13,10 @@ import {HttpClientModule} from "@angular/common/http";
 import { ClientsComponent } from './components/clients/clients.component';
 import { AboutComponent } from './components/about/about.component';
 import { RentsHistoryComponent } from './components/rents-history/rents-history.component';
+import {RouterModule} from "@angular/router";
+import {aboutUrl, carsUrl, clientsUrl, homePageUrl, notFoundUrl, rentsHistoryUrl} from "./models/urls";
+import { HomeComponent } from './components/home/home.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +27,8 @@ import { RentsHistoryComponent } from './components/rents-history/rents-history.
     ClientsComponent,
     AboutComponent,
     RentsHistoryComponent,
+    HomeComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,7 +36,15 @@ import { RentsHistoryComponent } from './components/rents-history/rents-history.
     HttpClientModule,
     MatButtonToggleModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    RouterModule.forRoot([
+      {path: homePageUrl, component: HomeComponent},
+      {path: rentsHistoryUrl, component: RentsHistoryComponent},
+      {path: carsUrl, component: CarsComponent},
+      {path: clientsUrl, component: ClientsComponent},
+      {path: aboutUrl, component: AboutComponent},
+      {path: notFoundUrl, component: NotFoundComponent}
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
